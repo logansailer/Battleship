@@ -1,15 +1,14 @@
+//create 10x10 grid
+//fill grid with [0]
+//fill with [1] == ship
+
 const Ship = require("./ship");
 
 class Gameboard {
   constructor() {
-    this.board = [];
-    for (let i = 0; i < 10; i++) {
-      for (let j = 0; j < 10; j++) {
-        this.board.push([i, j]);
-      }
-    }
+    this.board = new Array(10).fill("0").map(() => new Array(10).fill("0"));
   }
-
+  //takes an array as an arguement, places ship in that square
   place(position) {
     if (
       position[0] < 0 ||
@@ -19,7 +18,7 @@ class Gameboard {
     ) {
       return null;
     }
-    new Ship();
+    new Ship(position);
   }
 
   receiveAttack() {}
@@ -28,4 +27,4 @@ class Gameboard {
 }
 
 let board1 = new Gameboard();
-console.log(board1.board[]);
+console.log(board1.board[1][1]);
