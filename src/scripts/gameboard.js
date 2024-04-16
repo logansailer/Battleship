@@ -27,4 +27,4 @@ class Gameboard {
 }
 
 let board1 = new Gameboard();
-console.log(board1.board[1][1]);
+console.log(board1.board);
