@@ -11,7 +11,7 @@ class Gameboard {
 
   //places ship in starting position and the positions next to it given length and direction
   place(x, y, length, dir) {
-    let ship = new Ship(length);
+    let ship1 = new Ship(length);
     if (dir === "hor") {
       for (let i = 0; i < length; i++) {
         this.board[x][y + i] = 1;
@@ -56,10 +56,5 @@ class Gameboard {
 
   victory() {}
 }
-
-let board1 = new Gameboard();
-
-board1.place(0, 1, 3, "hor");
-console.log(board1.board[0][4]);
 
 module.exports = Gameboard;

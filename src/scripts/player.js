@@ -1,4 +1,12 @@
-const Gameboard = require("./gameboard")
+const Gameboard = require("./gameboard");
 
-let player = new Gameboard();
-let computer = new Gameboard();
+class Player {
+  constructor() {
+    this.game = new Gameboard();
+  }
+}
+
+let player = new Player();
+let computer = new Player();
+
+module.exports = Player;
