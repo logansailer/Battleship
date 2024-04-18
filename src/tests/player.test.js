@@ -14,6 +14,6 @@ test("adds ship at given coordinate of given size and dirction from player", () 
 
 test("checks if ship is added to ships array", () => {
   testPlayer.game.place(1, 1, 4, "hor");
-  testPlayer.game.place(1, 2, 4, "hor");
-  expect(testPlayer.game.ships).toEqual([4, 4]);
+    testPlayer.game.place(1, 1, 2, "hor");
+  expect(testPlayer.game.ships).toEqual([4, 4, 2]);
 });
