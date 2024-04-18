@@ -15,37 +15,34 @@ class Gameboard {
 
   //places ship in starting position and the positions next to it given length and direction
   place(x, y, length, dir) {
-    let ship1 = new Ship(length); //do something with this?
+    this.ships.push(length);
     if (dir === "hor") {
       for (let i = 0; i < length; i++) {
-        this.board[x][y + i] = 1;
+        if (x + length > 9 || this.board[x + i][y] != 0) {
+          return false;
+        }
+        this.board[x + i][y] = 1;
       }
     }
     if (dir === "ver") {
       for (let i = 0; i < length; i++) {
-        this.board[x + i][y] = 1;
+        if (y + length > 9 || this.board[x][y + i] != 0) {
+          return false;
+        }
+        this.board[x][y + i] = 1;
       }
     }
-    // if (
-    //   position[0] < 0 ||
-    //   position[0] > 9 ||
-    //   position[1] < 0 ||
-    //   position[1] > 9
-    // ) {
-    //   return null;
-    // }
   }
 
   allSunk() {
     //return false if any ships in ship array != sunk, otherwise true
     for (const ship of this.ships) {
-        if(!ship.isSunk()) {
-            return false
-        }
+      if (!ship.isSunk()) {
+        return false;
+      }
     }
     return true;
   }
-
 
   // if position has a ship, return true
   receiveAttack(x, y) {
@@ -63,3 +60,6 @@ class Gameboard {
 }
 
 module.exports = Gameboard;
+
+let testBoard = new Gameboard();
+testBoard.place(0, 1, 3, "ver");
