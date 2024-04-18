@@ -2,6 +2,7 @@ class Ship {
   constructor(length) {
     this.length = length;
     this.timesHit = 0;
+    this.sunk = false
   }
 
   hit() {
@@ -12,9 +13,10 @@ class Ship {
 
   isSunk() {
     if (this.timesHit >= this.length) {
-      return true;
+      this.sunk = true
+      return this.sunk;
     }
-    return false;
+    return this.sunk;
   }
 }
 
