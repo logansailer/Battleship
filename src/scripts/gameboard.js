@@ -1,5 +1,7 @@
 const Ship = require("./ship");
 
+//refactor board so it pushes ship name to array rather than number, make array null rather than 0
+
 class Gameboard {
   //0 == empty space, 1 == ship in that space
   constructor() {
@@ -44,7 +46,7 @@ class Gameboard {
   receiveAttack(x, y) {
     if (this.board[x][y] === 1) {
       this.success.push([x, y]);
-      Ship.hit(); //need to give ship a new variable
+      this.board[x][y].hit()//add test for this? idk how it might work
       return true;
     } else {
       this.missed.push([x, y]);
