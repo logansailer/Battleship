@@ -1,7 +1,3 @@
-//create 10x10 grid
-//fill grid with [0]
-//fill with [1] == ship
-
 const Ship = require("./ship");
 
 class Gameboard {
