@@ -1,7 +1,5 @@
 const Ship = require("./ship");
 
-//refactor board so it pushes ship name to array rather than number, make array null rather than 0
-
 class Gameboard {
   //0 == empty space, 1 == ship in that space
   constructor() {
@@ -12,19 +10,19 @@ class Gameboard {
   }
 
   //places ship in starting position and the positions next to it given length and direction
-  place(x, y, length, shipName, dir) {
+  place(x, y, shipName, dir) {
     this.ships.push(shipName);
     if (dir === "hor") {
-      for (let i = 0; i < length; i++) {
-        if (x + length > 9 || this.board[x + i][y] != 0) {
+      for (let i = 0; i < shipName.length; i++) {
+        if (x + shipName.length > 9 || this.board[x + i][y] != 0) {
           return false;
         }
         this.board[x + i][y] = shipName;
       }
     }
     if (dir === "ver") {
-      for (let i = 0; i < length; i++) {
-        if (y + length > 9 || this.board[x][y + i] != 0) {
+      for (let i = 0; i < shipName.length; i++) {
+        if (y + shipName.length > 9 || this.board[x][y + i] != 0) {
           return false;
         }
         this.board[x][y + i] = shipName;
@@ -44,9 +42,9 @@ class Gameboard {
 
   // if position has a ship, return true
   receiveAttack(x, y) {
-    if (this.board[x][y] === 1) {
+    if (this.board[x][y] != 0) {
       this.success.push([x, y]);
-      this.board[x][y].hit()//add test for this? idk how it might work
+      this.board[x][y].hit()
       return true;
     } else {
       this.missed.push([x, y]);
