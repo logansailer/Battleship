@@ -7,17 +7,17 @@ test("checks if test ship has proper length", () => {
 });
 
 test("adds 1 to hit count", () => {
-    testShip.hit()
+  testShip.hit();
   expect(testShip.timesHit).toBe(1);
 });
 
-test("tests if ship recognizes it is not sunk", () => {;
-  testShip.isSunk()
+test("tests if ship recognizes it is not sunk", () => {
+  testShip.isSunk();
   expect(testShip.sunk).toBe(false);
 });
 
 test("tests if ship recognizes it is sunk", () => {
   testShip.hit();
-  testShip.isSunk()
+  testShip.isSunk();
   expect(testShip.sunk).toBe(true);
 });

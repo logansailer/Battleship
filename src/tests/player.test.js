@@ -28,9 +28,8 @@ test("checks if ships can recieves hits properly from gameboard", () => {
   expect(testShip.sunk).toBe(false);
 });
 
-
 test("checks if ships can sink from gameboard", () => {
   testPlayer.game.receiveAttack(4, 1);
-  testShip.isSunk()
+  testShip.isSunk();
   expect(testShip.sunk).toBe(true);
 });
