@@ -56,6 +56,3 @@ class Gameboard {
 }
 
 module.exports = Gameboard;
-
-let testBoard = new Gameboard();
-testBoard.place(0, 1, 3, "ver");
