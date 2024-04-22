@@ -1,5 +1,6 @@
 const Player = require("./player");
 const makeBoard = require("./dom");
+const Ship = require("./ship")
 
 function startGame() {
   let player1 = new Player("Player 1");
@@ -16,6 +17,7 @@ function startGame() {
   let player2Destroyer = new Ship(3);
   let player2Submarine = new Ship(3);
   let player2Patrol = new Ship(2);
+
 
   makeBoard(player1, player2);
 }

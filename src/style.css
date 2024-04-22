@@ -1,0 +1,11 @@
+body{
+  color: blue
+}
+
+.gameboard {
+  width: 240px;
+  height: 240px;
+  display: grid;
+  grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+  cursor: crosshair;
+}

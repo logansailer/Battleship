@@ -1,7 +1,6 @@
 const startGame = require("./start");
 
 function makeBoard(player1, player2) {
-  console.log("hello?")
   for (let i = 0; i < 10; i++) {
     let row = document.createElement("div");
     row.classList.add("row-player1");
