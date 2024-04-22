@@ -1,11 +1,26 @@
-body{
-  color: blue
+.gameboard {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  border: solid black 1px;
 }
 
-.gameboard {
-  width: 240px;
-  height: 240px;
+.row-player1,
+.row-player2 {
   display: grid;
-  grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  border: solid grey 1px;
+}
+.cell-player1,
+.cell-player2 {
+  border: solid grey 1px;
+}
+
+.cell-player2 {
   cursor: crosshair;
+  hover {
+    background-color: #8585851c;
+  }
 }
