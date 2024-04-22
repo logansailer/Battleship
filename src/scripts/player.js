@@ -14,7 +14,4 @@ class Player {
   }
 }
 
-let player = new Player();
-let computer = new Player();
-
 module.exports = Player;
