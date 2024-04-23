@@ -34,4 +34,14 @@ function makeBoard(player1, player2) {
   }
 }
 
+function makeButtons(player) {
+  const boardButtons = document
+}
+
+function renderShips(player) {
+  document.querySelectorAll('.cell-player1').forEach((e, i) => {
+    let 
+  })
+}
+
 module.exports = makeBoard;

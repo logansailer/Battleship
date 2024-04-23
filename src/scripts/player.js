@@ -6,11 +6,28 @@ class Player {
     this.game = new Gameboard();
   }
 
-  attack(x, y, enemyBoard) {
-    if (enemyBoard.receiveAttack(x, y)) {
-      return true;
+  randomPos() {
+    let xAxis = Math.floor(Math.random() * 10);
+    let yAxis = Math.floor(Math.random() * 10);
+    return xAxis, yAxis;
+  }
+
+  randomShip(shipName) {
+    let xAxis = Math.floor(Math.random() * 10);
+    let yAxis = Math.floor(Math.random() * 10);
+    let dir = Math.round(Math.random());
+
+    if (dir === 0) {
+      dir = "hor";
+      //fix to check if space is empty, try again if it isnt
+      if (game.place(xAxis, yAxis, shipName, dir) == false) return false;
     }
-    return false;
+
+    if (dir === 1) {
+      dir = "ver";
+      //fix to check if space is empty, try again if it isnt
+      if (game.place(xAxis, yAxis, shipName, dir) == false) return false;
+    }
   }
 }
 
