@@ -33,3 +33,7 @@ test("checks if ships can sink from gameboard", () => {
   testShip.isSunk();
   expect(testShip.sunk).toBe(true);
 });
+
+test("checks if coordinate without a ship is free", () => {
+  expect(testPlayer.game.board[0][0]).toBe("0");
+});

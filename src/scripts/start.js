@@ -1,6 +1,7 @@
 const Player = require("./player");
-const makeBoard = require("./dom");
-const Ship = require("./ship")
+const domFunctions = require("./dom");
+const Ship = require("./ship");
+const Gameboard = require("./gameboard");
 
 function startGame() {
   let player1 = new Player("Player 1");
@@ -12,6 +13,12 @@ function startGame() {
   let player1Destroyer = new Ship(3);
   let player1Submarine = new Ship(3);
   let player1Patrol = new Ship(2);
+
+  player1.randomShip(player1Carrier);
+  player1.randomShip(player1Battleship);
+  player1.randomShip(player1Destroyer);
+  player1.randomShip(player1Submarine);
+  player1.randomShip(player1Patrol);
 
   //creates player 2's (CPU's) ships
   let player2Carrier = new Ship(5);
@@ -27,7 +34,8 @@ function startGame() {
   player2.randomShip(player2Submarine);
   player2.randomShip(player2Patrol);
 
-  makeBoard(player1, player2);
+  domFunctions.makeBoard(player1, player2);
+  domFunctions.renderShips(player1)
 }
 
 module.exports = startGame;

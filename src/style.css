@@ -7,20 +7,24 @@
   border: solid black 1px;
 }
 
-.row-player1,
-.row-player2 {
+.p1-row,
+.p2-row {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   border: solid grey 1px;
 }
-.cell-player1,
-.cell-player2 {
+.p1-cell,
+.p2-cell {
   border: solid grey 1px;
 }
 
-.cell-player2 {
+.p2-cell {
   cursor: crosshair;
   hover {
     background-color: #8585851c;
   }
+}
+
+.fleet{
+  background-color: red
 }

@@ -1,1 +1,804 @@
-(()=>{var e={208:(e,t,r)=>{"use strict";r.d(t,{A:()=>i});var n=r(601),s=r.n(n),o=r(314),a=r.n(o)()(s());a.push([e.id,".gameboard {\n  position: relative;\n  width: 400px;\n  height: 400px;\n  display: grid;\n  grid-template-rows: repeat(10, 1fr);\n  border: solid black 1px;\n}\n\n.row-player1,\n.row-player2 {\n  display: grid;\n  grid-template-columns: repeat(10, 1fr);\n  border: solid grey 1px;\n}\n.cell-player1,\n.cell-player2 {\n  border: solid grey 1px;\n}\n\n.cell-player2 {\n  cursor: crosshair;\n  hover {\n    background-color: #8585851c;\n  }\n}\n",""]);const i=a},314:e=>{"use strict";e.exports=function(e){var t=[];return t.toString=function(){return this.map((function(t){var r="",n=void 0!==t[5];return t[4]&&(r+="@supports (".concat(t[4],") {")),t[2]&&(r+="@media ".concat(t[2]," {")),n&&(r+="@layer".concat(t[5].length>0?" ".concat(t[5]):""," {")),r+=e(t),n&&(r+="}"),t[2]&&(r+="}"),t[4]&&(r+="}"),r})).join("")},t.i=function(e,r,n,s,o){"string"==typeof e&&(e=[[null,e,void 0]]);var a={};if(n)for(var i=0;i<this.length;i++){var c=this[i][0];null!=c&&(a[c]=!0)}for(var l=0;l<e.length;l++){var u=[].concat(e[l]);n&&a[u[0]]||(void 0!==o&&(void 0===u[5]||(u[1]="@layer".concat(u[5].length>0?" ".concat(u[5]):""," {").concat(u[1],"}")),u[5]=o),r&&(u[2]?(u[1]="@media ".concat(u[2]," {").concat(u[1],"}"),u[2]=r):u[2]=r),s&&(u[4]?(u[1]="@supports (".concat(u[4],") {").concat(u[1],"}"),u[4]=s):u[4]="".concat(s)),t.push(u))}},t}},601:e=>{"use strict";e.exports=function(e){return e[1]}},72:e=>{"use strict";var t=[];function r(e){for(var r=-1,n=0;n<t.length;n++)if(t[n].identifier===e){r=n;break}return r}function n(e,n){for(var o={},a=[],i=0;i<e.length;i++){var c=e[i],l=n.base?c[0]+n.base:c[0],u=o[l]||0,d="".concat(l," ").concat(u);o[l]=u+1;var p=r(d),f={css:c[1],media:c[2],sourceMap:c[3],supports:c[4],layer:c[5]};if(-1!==p)t[p].references++,t[p].updater(f);else{var h=s(f,n);n.byIndex=i,t.splice(i,0,{identifier:d,updater:h,references:1})}a.push(d)}return a}function s(e,t){var r=t.domAPI(t);return r.update(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap&&t.supports===e.supports&&t.layer===e.layer)return;r.update(e=t)}else r.remove()}}e.exports=function(e,s){var o=n(e=e||[],s=s||{});return function(e){e=e||[];for(var a=0;a<o.length;a++){var i=r(o[a]);t[i].references--}for(var c=n(e,s),l=0;l<o.length;l++){var u=r(o[l]);0===t[u].references&&(t[u].updater(),t.splice(u,1))}o=c}}},659:e=>{"use strict";var t={};e.exports=function(e,r){var n=function(e){if(void 0===t[e]){var r=document.querySelector(e);if(window.HTMLIFrameElement&&r instanceof window.HTMLIFrameElement)try{r=r.contentDocument.head}catch(e){r=null}t[e]=r}return t[e]}(e);if(!n)throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");n.appendChild(r)}},540:e=>{"use strict";e.exports=function(e){var t=document.createElement("style");return e.setAttributes(t,e.attributes),e.insert(t,e.options),t}},56:(e,t,r)=>{"use strict";e.exports=function(e){var t=r.nc;t&&e.setAttribute("nonce",t)}},825:e=>{"use strict";e.exports=function(e){if("undefined"==typeof document)return{update:function(){},remove:function(){}};var t=e.insertStyleElement(e);return{update:function(r){!function(e,t,r){var n="";r.supports&&(n+="@supports (".concat(r.supports,") {")),r.media&&(n+="@media ".concat(r.media," {"));var s=void 0!==r.layer;s&&(n+="@layer".concat(r.layer.length>0?" ".concat(r.layer):""," {")),n+=r.css,s&&(n+="}"),r.media&&(n+="}"),r.supports&&(n+="}");var o=r.sourceMap;o&&"undefined"!=typeof btoa&&(n+="\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(o))))," */")),t.styleTagTransform(n,e,t.options)}(t,e,r)},remove:function(){!function(e){if(null===e.parentNode)return!1;e.parentNode.removeChild(e)}(t)}}}},113:e=>{"use strict";e.exports=function(e,t){if(t.styleSheet)t.styleSheet.cssText=e;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(e))}}},451:(e,t,r)=>{r(467),e.exports=function(e,t){for(let r=0;r<10;r++){let n=document.createElement("div");n.classList.add("row-player1"),n.setAttribute("id",`player1-row${r}`),document.getElementById("player1-board").appendChild(n),e.game.board[r].forEach((s=>{let o=document.createElement("div");o.classList.add("cell-player1"),o.setAttribute("id",`player1-row${r}-cell${s}`),n.appendChild(o),o.addEventListener("click",(n=>{loadPlayer1Attack(n,r,s,e,t)}))}))}for(let e=0;e<10;e++){let r=document.createElement("div");r.classList.add("row-player2"),r.setAttribute("id",`player2-row${e}`),document.getElementById("player2-board").appendChild(r),t.game.board[e].forEach((t=>{let n=document.createElement("div");n.classList.add("cell-player2"),n.setAttribute("id",`player2-row${e}-cell${t}`),r.appendChild(n)}))}}},245:(e,t,r)=>{r(877),e.exports=class{constructor(){this.board=new Array(10).fill("0").map((()=>new Array(10).fill("0"))),this.ships=[],this.success=[],this.missed=[]}place(e,t,r,n){if(this.ships.push(r),"hor"===n)for(let n=0;n<r.length;n++){if(e+r.length>9||0!=this.board[e+n][t])return!1;this.board[e+n][t]=r}if("ver"===n)for(let n=0;n<r.length;n++){if(t+r.length>9||0!=this.board[e][t+n])return!1;this.board[e][t+n]=r}}allSunk(){for(const e of this.ships)if(!e.isSunk())return!1;return!0}receiveAttack(e,t){return 0!=this.board[e][t]?(this.success.push([e,t]),this.board[e][t].hit(),!0):(this.missed.push([e,t]),!1)}victory(){}}},398:(e,t,r)=>{const n=r(245);e.exports=class{constructor(e){this.name=e,this.game=new n}attack(e,t,r){return!!r.receiveAttack(e,t)}}},877:e=>{e.exports=class{constructor(e){this.length=e,this.timesHit=0,this.sunk=!1}hit(){this.timesHit++}isSunk(){return this.timesHit>=this.length?(this.sunk=!0,this.sunk):this.sunk}}},467:(e,t,r)=>{const n=r(398),s=r(451),o=r(877);e.exports=function(){let e=new n("Player 1"),t=new n("Player 2");new o(5),new o(4),new o(3),new o(3),new o(2),new o(5),new o(4),new o(3),new o(3),new o(2),s(e,t)}}},t={};function r(n){var s=t[n];if(void 0!==s)return s.exports;var o=t[n]={id:n,exports:{}};return e[n](o,o.exports,r),o.exports}r.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return r.d(t,{a:t}),t},r.d=(e,t)=>{for(var n in t)r.o(t,n)&&!r.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r.nc=void 0,(()=>{"use strict";var e=r(72),t=r.n(e),n=r(825),s=r.n(n),o=r(659),a=r.n(o),i=r(56),c=r.n(i),l=r(540),u=r.n(l),d=r(113),p=r.n(d),f=r(208),h={};h.styleTagTransform=p(),h.setAttributes=c(),h.insert=a().bind(null,"head"),h.domAPI=s(),h.insertStyleElement=u(),t()(f.A,h),f.A&&f.A.locals&&f.A.locals,r(467)()})()})();
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 208:
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   A: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(601);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(314);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.gameboard {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  border: solid black 1px;
+}
+
+.p1-row,
+.p2-row {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  border: solid grey 1px;
+}
+.p1-cell,
+.p2-cell {
+  border: solid grey 1px;
+}
+
+.p2-cell {
+  cursor: crosshair;
+  hover {
+    background-color: #8585851c;
+  }
+}
+
+.fleet{
+  background-color: red
+}
+`, ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ 314:
+/***/ ((module) => {
+
+"use strict";
+
+
+/*
+  MIT License http://www.opensource.org/licenses/mit-license.php
+  Author Tobias Koppers @sokra
+*/
+module.exports = function (cssWithMappingToString) {
+  var list = [];
+
+  // return the list of modules as css string
+  list.toString = function toString() {
+    return this.map(function (item) {
+      var content = "";
+      var needLayer = typeof item[5] !== "undefined";
+      if (item[4]) {
+        content += "@supports (".concat(item[4], ") {");
+      }
+      if (item[2]) {
+        content += "@media ".concat(item[2], " {");
+      }
+      if (needLayer) {
+        content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
+      }
+      content += cssWithMappingToString(item);
+      if (needLayer) {
+        content += "}";
+      }
+      if (item[2]) {
+        content += "}";
+      }
+      if (item[4]) {
+        content += "}";
+      }
+      return content;
+    }).join("");
+  };
+
+  // import a list of modules into the list
+  list.i = function i(modules, media, dedupe, supports, layer) {
+    if (typeof modules === "string") {
+      modules = [[null, modules, undefined]];
+    }
+    var alreadyImportedModules = {};
+    if (dedupe) {
+      for (var k = 0; k < this.length; k++) {
+        var id = this[k][0];
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
+      }
+    }
+    for (var _k = 0; _k < modules.length; _k++) {
+      var item = [].concat(modules[_k]);
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        continue;
+      }
+      if (typeof layer !== "undefined") {
+        if (typeof item[5] === "undefined") {
+          item[5] = layer;
+        } else {
+          item[1] = "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {").concat(item[1], "}");
+          item[5] = layer;
+        }
+      }
+      if (media) {
+        if (!item[2]) {
+          item[2] = media;
+        } else {
+          item[1] = "@media ".concat(item[2], " {").concat(item[1], "}");
+          item[2] = media;
+        }
+      }
+      if (supports) {
+        if (!item[4]) {
+          item[4] = "".concat(supports);
+        } else {
+          item[1] = "@supports (".concat(item[4], ") {").concat(item[1], "}");
+          item[4] = supports;
+        }
+      }
+      list.push(item);
+    }
+  };
+  return list;
+};
+
+/***/ }),
+
+/***/ 601:
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (i) {
+  return i[1];
+};
+
+/***/ }),
+
+/***/ 72:
+/***/ ((module) => {
+
+"use strict";
+
+
+var stylesInDOM = [];
+function getIndexByIdentifier(identifier) {
+  var result = -1;
+  for (var i = 0; i < stylesInDOM.length; i++) {
+    if (stylesInDOM[i].identifier === identifier) {
+      result = i;
+      break;
+    }
+  }
+  return result;
+}
+function modulesToDom(list, options) {
+  var idCountMap = {};
+  var identifiers = [];
+  for (var i = 0; i < list.length; i++) {
+    var item = list[i];
+    var id = options.base ? item[0] + options.base : item[0];
+    var count = idCountMap[id] || 0;
+    var identifier = "".concat(id, " ").concat(count);
+    idCountMap[id] = count + 1;
+    var indexByIdentifier = getIndexByIdentifier(identifier);
+    var obj = {
+      css: item[1],
+      media: item[2],
+      sourceMap: item[3],
+      supports: item[4],
+      layer: item[5]
+    };
+    if (indexByIdentifier !== -1) {
+      stylesInDOM[indexByIdentifier].references++;
+      stylesInDOM[indexByIdentifier].updater(obj);
+    } else {
+      var updater = addElementStyle(obj, options);
+      options.byIndex = i;
+      stylesInDOM.splice(i, 0, {
+        identifier: identifier,
+        updater: updater,
+        references: 1
+      });
+    }
+    identifiers.push(identifier);
+  }
+  return identifiers;
+}
+function addElementStyle(obj, options) {
+  var api = options.domAPI(options);
+  api.update(obj);
+  var updater = function updater(newObj) {
+    if (newObj) {
+      if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap && newObj.supports === obj.supports && newObj.layer === obj.layer) {
+        return;
+      }
+      api.update(obj = newObj);
+    } else {
+      api.remove();
+    }
+  };
+  return updater;
+}
+module.exports = function (list, options) {
+  options = options || {};
+  list = list || [];
+  var lastIdentifiers = modulesToDom(list, options);
+  return function update(newList) {
+    newList = newList || [];
+    for (var i = 0; i < lastIdentifiers.length; i++) {
+      var identifier = lastIdentifiers[i];
+      var index = getIndexByIdentifier(identifier);
+      stylesInDOM[index].references--;
+    }
+    var newLastIdentifiers = modulesToDom(newList, options);
+    for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+      var _identifier = lastIdentifiers[_i];
+      var _index = getIndexByIdentifier(_identifier);
+      if (stylesInDOM[_index].references === 0) {
+        stylesInDOM[_index].updater();
+        stylesInDOM.splice(_index, 1);
+      }
+    }
+    lastIdentifiers = newLastIdentifiers;
+  };
+};
+
+/***/ }),
+
+/***/ 659:
+/***/ ((module) => {
+
+"use strict";
+
+
+var memo = {};
+
+/* istanbul ignore next  */
+function getTarget(target) {
+  if (typeof memo[target] === "undefined") {
+    var styleTarget = document.querySelector(target);
+
+    // Special case to return head of iframe instead of iframe itself
+    if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+      try {
+        // This will throw an exception if access to iframe is blocked
+        // due to cross-origin restrictions
+        styleTarget = styleTarget.contentDocument.head;
+      } catch (e) {
+        // istanbul ignore next
+        styleTarget = null;
+      }
+    }
+    memo[target] = styleTarget;
+  }
+  return memo[target];
+}
+
+/* istanbul ignore next  */
+function insertBySelector(insert, style) {
+  var target = getTarget(insert);
+  if (!target) {
+    throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+  }
+  target.appendChild(style);
+}
+module.exports = insertBySelector;
+
+/***/ }),
+
+/***/ 540:
+/***/ ((module) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function insertStyleElement(options) {
+  var element = document.createElement("style");
+  options.setAttributes(element, options.attributes);
+  options.insert(element, options.options);
+  return element;
+}
+module.exports = insertStyleElement;
+
+/***/ }),
+
+/***/ 56:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function setAttributesWithoutAttributes(styleElement) {
+  var nonce =  true ? __webpack_require__.nc : 0;
+  if (nonce) {
+    styleElement.setAttribute("nonce", nonce);
+  }
+}
+module.exports = setAttributesWithoutAttributes;
+
+/***/ }),
+
+/***/ 825:
+/***/ ((module) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function apply(styleElement, options, obj) {
+  var css = "";
+  if (obj.supports) {
+    css += "@supports (".concat(obj.supports, ") {");
+  }
+  if (obj.media) {
+    css += "@media ".concat(obj.media, " {");
+  }
+  var needLayer = typeof obj.layer !== "undefined";
+  if (needLayer) {
+    css += "@layer".concat(obj.layer.length > 0 ? " ".concat(obj.layer) : "", " {");
+  }
+  css += obj.css;
+  if (needLayer) {
+    css += "}";
+  }
+  if (obj.media) {
+    css += "}";
+  }
+  if (obj.supports) {
+    css += "}";
+  }
+  var sourceMap = obj.sourceMap;
+  if (sourceMap && typeof btoa !== "undefined") {
+    css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
+  }
+
+  // For old IE
+  /* istanbul ignore if  */
+  options.styleTagTransform(css, styleElement, options.options);
+}
+function removeStyleElement(styleElement) {
+  // istanbul ignore if
+  if (styleElement.parentNode === null) {
+    return false;
+  }
+  styleElement.parentNode.removeChild(styleElement);
+}
+
+/* istanbul ignore next  */
+function domAPI(options) {
+  if (typeof document === "undefined") {
+    return {
+      update: function update() {},
+      remove: function remove() {}
+    };
+  }
+  var styleElement = options.insertStyleElement(options);
+  return {
+    update: function update(obj) {
+      apply(styleElement, options, obj);
+    },
+    remove: function remove() {
+      removeStyleElement(styleElement);
+    }
+  };
+}
+module.exports = domAPI;
+
+/***/ }),
+
+/***/ 113:
+/***/ ((module) => {
+
+"use strict";
+
+
+/* istanbul ignore next  */
+function styleTagTransform(css, styleElement) {
+  if (styleElement.styleSheet) {
+    styleElement.styleSheet.cssText = css;
+  } else {
+    while (styleElement.firstChild) {
+      styleElement.removeChild(styleElement.firstChild);
+    }
+    styleElement.appendChild(document.createTextNode(css));
+  }
+}
+module.exports = styleTagTransform;
+
+/***/ }),
+
+/***/ 451:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const startGame = __webpack_require__(467);
+
+function makeBoard(player1, player2) {
+  console.log("hello");
+  for (let i = 0; i < 10; i++) {
+    let row = document.createElement("div");
+    row.classList.add("p1-row");
+    row.setAttribute("id", `p1-row${i}`);
+    document.getElementById("player1-board").appendChild(row);
+
+    player1.game.board[i].forEach((j) => {
+      let cell = document.createElement("div");
+      cell.classList.add("p1-cell");
+      cell.setAttribute("id", `p1-row${i}-cell${j}`);
+      row.appendChild(cell);
+    });
+  }
+
+  for (let i = 0; i < 10; i++) {
+    let row = document.createElement("div");
+    row.classList.add("p2-row");
+    row.setAttribute("id", `p2-row${i}`);
+    document.getElementById("player2-board").appendChild(row);
+
+    player2.game.board[i].forEach((j) => {
+      let cell = document.createElement("div");
+      cell.classList.add("p2-cell");
+      cell.setAttribute("id", `p2-row${i}-cell${j}`);
+      row.appendChild(cell);
+
+      cell.addEventListener("click", (e) => {
+        loadPlayer1Attack(e, i, j, player1, player2);
+      });
+    });
+  }
+}
+
+function makeButtons(player) {
+  const boardButtons = document;
+}
+
+function renderShips(player) {
+  document.querySelectorAll(".p1-cell").forEach((e, i) => {
+    let xAxis, yAxis;
+    let pos = "" + i;
+
+    // transform index string to array of xAxis and yAxis
+    if (i < 10) {
+      xAxis = 0;
+      yAxis = i;
+    } else {
+      pos = pos.split("");
+      xAxis = pos[0];
+      yAxis = pos[1];
+    }
+
+    if (player.game.board[xAxis][yAxis] === "0") return;
+    if (player.game.board[xAxis][yAxis] === "res") e.classList.add("res");
+    else e.classList.add("fleet");
+  });
+}
+
+module.exports = { makeBoard, renderShips };
+
+
+/***/ }),
+
+/***/ 245:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const Ship = __webpack_require__(877);
+
+class Gameboard {
+  //0 == empty space, 1 == ship in that space
+  constructor() {
+    this.board = new Array(10).fill("0").map(() => new Array(10).fill("0"));
+    this.ships = [];
+    this.success = [];
+    this.missed = [];
+  }
+
+  //places ship in starting position and the positions next to it given length and direction
+  place(x, y, shipName, dir) {
+    this.ships.push(shipName);
+    if (dir === "hor") {
+      //gets length from ship object
+      for (let i = 0; i < shipName.length; i++) {
+        //checks for overlow
+        if (x + shipName.length > 9 || this.board[x + i][y] != 0) {
+          return false;
+        }
+        //checks if ship is already in spot
+        if (this.board[x + i][y] != 0) {
+          return false;
+        }
+        this.board[x + i][y] = shipName;
+      }
+    }
+    if (dir === "ver") {
+      //gets name from ship object
+      for (let i = 0; i < shipName.length; i++) {
+        //checks for overflow
+        if (y + shipName.length > 9 || this.board[x][y + i] != 0) {
+          return false;
+        }
+        //checks if ship is already in spot
+        if (this.board[x][y + i] != 0) {
+          return false;
+        }
+        this.board[x][y + i] = shipName;
+      }
+    }
+  }
+
+  allSunk() {
+    //return false if any ships in ship array != sunk, otherwise true
+    for (const ship of this.ships) {
+      if (!ship.isSunk()) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // if position has a ship, return true
+  receiveAttack(x, y) {
+    if (this.board[x][y] != 0) {
+      this.success.push([x, y]);
+      this.board[x][y].hit();
+      return true;
+    } else {
+      this.missed.push([x, y]);
+      return false;
+    }
+  }
+
+  //need to do this part
+  victory() {}
+}
+
+module.exports = Gameboard;
+
+
+/***/ }),
+
+/***/ 398:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const Gameboard = __webpack_require__(245);
+
+class Player {
+  constructor(name) {
+    this.name = name;
+    this.game = new Gameboard();
+  }
+
+  randomPos() {
+    let xAxis = Math.floor(Math.random() * 10);
+    let yAxis = Math.floor(Math.random() * 10);
+    return xAxis, yAxis;
+  }
+
+  randomShip(shipName) {
+    let xAxis = Math.floor(Math.random() * 10);
+    let yAxis = Math.floor(Math.random() * 10);
+    let dir = Math.round(Math.random());
+
+    if (dir === 0) {
+      dir = "hor";
+      //fix to check if space is empty, try again if it isnt
+      if (this.game.place(xAxis, yAxis, shipName, dir) == false) return false;
+    }
+
+    if (dir === 1) {
+      dir = "ver";
+      //fix to check if space is empty, try again if it isnt
+      if (this.game.place(xAxis, yAxis, shipName, dir) == false) return false;
+    }
+  }
+}
+
+module.exports = Player;
+
+
+/***/ }),
+
+/***/ 877:
+/***/ ((module) => {
+
+class Ship {
+  constructor(length) {
+    this.length = length;
+    this.timesHit = 0;
+    this.sunk = false;
+  }
+
+  hit() {
+    this.timesHit++;
+  }
+
+  isSunk() {
+    if (this.timesHit >= this.length) {
+      this.sunk = true;
+      return this.sunk;
+    }
+    return this.sunk;
+  }
+}
+
+module.exports = Ship;
+
+
+/***/ }),
+
+/***/ 467:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const Player = __webpack_require__(398);
+const domFunctions = __webpack_require__(451);
+const Ship = __webpack_require__(877);
+const Gameboard = __webpack_require__(245);
+
+function startGame() {
+  let player1 = new Player("Player 1");
+  let player2 = new Player("Player 2");
+
+  //creates player 1's (controller's) ships
+  let player1Carrier = new Ship(5);
+  let player1Battleship = new Ship(4);
+  let player1Destroyer = new Ship(3);
+  let player1Submarine = new Ship(3);
+  let player1Patrol = new Ship(2);
+
+  player1.randomShip(player1Carrier);
+  player1.randomShip(player1Battleship);
+  player1.randomShip(player1Destroyer);
+  player1.randomShip(player1Submarine);
+  player1.randomShip(player1Patrol);
+
+  //creates player 2's (CPU's) ships
+  let player2Carrier = new Ship(5);
+  let player2Battleship = new Ship(4);
+  let player2Destroyer = new Ship(3);
+  let player2Submarine = new Ship(3);
+  let player2Patrol = new Ship(2);
+
+  //randomly places player 2's ships on their gameboard
+  player2.randomShip(player2Carrier);
+  player2.randomShip(player2Battleship);
+  player2.randomShip(player2Destroyer);
+  player2.randomShip(player2Submarine);
+  player2.randomShip(player2Patrol);
+
+  domFunctions.makeBoard(player1, player2);
+  domFunctions.renderShips(player1)
+}
+
+module.exports = startGame;
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			id: moduleId,
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/nonce */
+/******/ 	(() => {
+/******/ 		__webpack_require__.nc = undefined;
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js
+var injectStylesIntoStyleTag = __webpack_require__(72);
+var injectStylesIntoStyleTag_default = /*#__PURE__*/__webpack_require__.n(injectStylesIntoStyleTag);
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/styleDomAPI.js
+var styleDomAPI = __webpack_require__(825);
+var styleDomAPI_default = /*#__PURE__*/__webpack_require__.n(styleDomAPI);
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/insertBySelector.js
+var insertBySelector = __webpack_require__(659);
+var insertBySelector_default = /*#__PURE__*/__webpack_require__.n(insertBySelector);
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js
+var setAttributesWithoutAttributes = __webpack_require__(56);
+var setAttributesWithoutAttributes_default = /*#__PURE__*/__webpack_require__.n(setAttributesWithoutAttributes);
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/insertStyleElement.js
+var insertStyleElement = __webpack_require__(540);
+var insertStyleElement_default = /*#__PURE__*/__webpack_require__.n(insertStyleElement);
+// EXTERNAL MODULE: ./node_modules/style-loader/dist/runtime/styleTagTransform.js
+var styleTagTransform = __webpack_require__(113);
+var styleTagTransform_default = /*#__PURE__*/__webpack_require__.n(styleTagTransform);
+// EXTERNAL MODULE: ./node_modules/css-loader/dist/cjs.js!./src/style.css
+var style = __webpack_require__(208);
+;// CONCATENATED MODULE: ./src/style.css
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (styleTagTransform_default());
+options.setAttributes = (setAttributesWithoutAttributes_default());
+options.insert = insertBySelector_default().bind(null, "head");
+options.domAPI = (styleDomAPI_default());
+options.insertStyleElement = (insertStyleElement_default());
+
+var update = injectStylesIntoStyleTag_default()(style/* default */.A, options);
+
+
+
+
+       /* harmony default export */ const src_style = (style/* default */.A && style/* default */.A.locals ? style/* default */.A.locals : undefined);
+
+;// CONCATENATED MODULE: ./src/index.js
+
+const startGame = __webpack_require__(467);
+
+startGame();
+
+})();
+
+/******/ })()
+;
