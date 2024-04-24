@@ -15,22 +15,24 @@ function startGame() {
   let player1Patrol = new Ship(2);
 
   //randomly places player 1's ships on their gameboard
-  while (player1.randomShip(player1Carrier) === false) {
-    console.log("five")
-    player1.randomShip(player1Carrier);
+  let placementCheck = 0;
+  while (placementCheck < 4) {
+    player1.randomShip(player1Carrier)
   }
-  while (player1.randomShip(player1Battleship) === false) {
-    player1.randomShip(player1Battleship);
-  }
-  while (player1.randomShip(player1Destroyer) === false) {
-    player1.randomShip(player1Destroyer);
-  }
-  while (player1.randomShip(player1Submarine) === false) {
-    player1.randomShip(player1Submarine);
-  }
-  while (player1.randomShip(player1Patrol) === false) {
-    player1.randomShip(player1Patrol);
-  }
+  //player1.randomShip(player1Battleship);
+
+  // {
+  //   player1.randomShip(player1Battleship);
+  // }
+  // while (player1.randomShip(player1Destroyer) === false) {
+  //   player1.randomShip(player1Destroyer);
+  // }
+  // while (player1.randomShip(player1Submarine) === false) {
+  //   player1.randomShip(player1Submarine);
+  // }
+  // while (player1.randomShip(player1Patrol) === false) {
+  //   player1.randomShip(player1Patrol);
+  // }
 
   //creates player 2's (CPU's) ships
   let player2Carrier = new Ship(5);
