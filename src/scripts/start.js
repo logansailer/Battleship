@@ -14,7 +14,10 @@ function startGame() {
   let player1Submarine = new Ship(3);
   let player1Patrol = new Ship(2);
 
-  player1.randomShip(player1Carrier);
+  //randomly places player 1's ships on their gameboard
+  do {
+    player1.randomShip(player1Carrier);
+  } while (false);
   player1.randomShip(player1Battleship);
   player1.randomShip(player1Destroyer);
   player1.randomShip(player1Submarine);
@@ -35,7 +38,7 @@ function startGame() {
   player2.randomShip(player2Patrol);
 
   domFunctions.makeBoard(player1, player2);
-  domFunctions.renderShips(player1)
+  domFunctions.renderShips(player1);
 }
 
 module.exports = startGame;

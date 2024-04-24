@@ -15,26 +15,19 @@ class Gameboard {
     if (dir === "hor") {
       //gets length from ship object
       for (let i = 0; i < shipName.length; i++) {
-        //checks for overlow
+        //checks for overlow or if ship already in spot
         if (x + shipName.length > 9 || this.board[x + i][y] != 0) {
           return false;
         }
-        //checks if ship is already in spot
-        if (this.board[x + i][y] != 0) {
-          return false;
-        }
+
         this.board[x + i][y] = shipName;
       }
     }
     if (dir === "ver") {
       //gets name from ship object
       for (let i = 0; i < shipName.length; i++) {
-        //checks for overflow
+        //checks for overlow or if ship already in spot
         if (y + shipName.length > 9 || this.board[x][y + i] != 0) {
-          return false;
-        }
-        //checks if ship is already in spot
-        if (this.board[x][y + i] != 0) {
           return false;
         }
         this.board[x][y + i] = shipName;
