@@ -646,10 +646,8 @@ function startGame() {
   let player1Patrol = new Ship(2);
 
   //randomly places player 1's ships on their gameboard
-  let placementCheck = 0;
-  while (placementCheck < 4) {
+  while (false) {
     player1.randomShip(player1Carrier)
-    placementCheck++
   }
   //player1.randomShip(player1Battleship);
 
