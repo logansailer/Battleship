@@ -498,7 +498,6 @@ class Gameboard {
 
   //places ship in starting position and the positions next to it given length and direction
   place(x, y, shipName, dir) {
-    this.ships.push(shipName);
     if (dir === "hor") {
       //gets length from ship object
       for (let i = 0; i < shipName.length; i++) {
@@ -506,8 +505,8 @@ class Gameboard {
         if (x + shipName.length > 9 || this.board[x + i][y] != 0) {
           return false;
         }
-
         this.board[x + i][y] = shipName;
+        this.ships.push(shipName);
       }
     }
     if (dir === "ver") {
@@ -518,6 +517,7 @@ class Gameboard {
           return false;
         }
         this.board[x][y + i] = shipName;
+        this.ships.push(shipName);
       }
     }
   }
@@ -578,13 +578,17 @@ class Player {
     if (dir === 0) {
       dir = "hor";
       //fix to check if space is empty, try again if it isnt
-      this.game.place(xAxis, yAxis, shipName, dir);
+      if (this.game.place(xAxis, yAxis, shipName, dir) === false) {
+        return false;
+      }
     }
 
     if (dir === 1) {
       dir = "ver";
       //fix to check if space is empty, try again if it isnt
-      this.game.place(xAxis, yAxis, shipName, dir);
+      if (this.game.place(xAxis, yAxis, shipName, dir) === false) {
+        return false;
+      }
     }
   }
 }
@@ -642,13 +646,22 @@ function startGame() {
   let player1Patrol = new Ship(2);
 
   //randomly places player 1's ships on their gameboard
-  do {
+  while (player1.randomShip(player1Carrier) === false) {
+    console.log("five")
     player1.randomShip(player1Carrier);
-  } while (false);
-  player1.randomShip(player1Battleship);
-  player1.randomShip(player1Destroyer);
-  player1.randomShip(player1Submarine);
-  player1.randomShip(player1Patrol);
+  }
+  while (player1.randomShip(player1Battleship) === false) {
+    player1.randomShip(player1Battleship);
+  }
+  while (player1.randomShip(player1Destroyer) === false) {
+    player1.randomShip(player1Destroyer);
+  }
+  while (player1.randomShip(player1Submarine) === false) {
+    player1.randomShip(player1Submarine);
+  }
+  while (player1.randomShip(player1Patrol) === false) {
+    player1.randomShip(player1Patrol);
+  }
 
   //creates player 2's (CPU's) ships
   let player2Carrier = new Ship(5);

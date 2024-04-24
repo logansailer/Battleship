@@ -20,13 +20,17 @@ class Player {
     if (dir === 0) {
       dir = "hor";
       //fix to check if space is empty, try again if it isnt
-      this.game.place(xAxis, yAxis, shipName, dir);
+      if (this.game.place(xAxis, yAxis, shipName, dir) === false) {
+        return false;
+      }
     }
 
     if (dir === 1) {
       dir = "ver";
       //fix to check if space is empty, try again if it isnt
-      this.game.place(xAxis, yAxis, shipName, dir);
+      if (this.game.place(xAxis, yAxis, shipName, dir) === false) {
+        return false;
+      }
     }
   }
 }

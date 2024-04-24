@@ -11,7 +11,6 @@ class Gameboard {
 
   //places ship in starting position and the positions next to it given length and direction
   place(x, y, shipName, dir) {
-    this.ships.push(shipName);
     if (dir === "hor") {
       //gets length from ship object
       for (let i = 0; i < shipName.length; i++) {
@@ -19,8 +18,8 @@ class Gameboard {
         if (x + shipName.length > 9 || this.board[x + i][y] != 0) {
           return false;
         }
-
         this.board[x + i][y] = shipName;
+        this.ships.push(shipName);
       }
     }
     if (dir === "ver") {
@@ -31,6 +30,7 @@ class Gameboard {
           return false;
         }
         this.board[x][y + i] = shipName;
+        this.ships.push(shipName);
       }
     }
   }
