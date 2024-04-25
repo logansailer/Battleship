@@ -1,5 +1,7 @@
 const startGame = require("./start");
 
+function loadPlayer1Attack(){}
+
 function makeBoard(player1, player2) {
   for (let i = 0; i < 10; i++) {
     let row = document.createElement("div");
@@ -10,7 +12,7 @@ function makeBoard(player1, player2) {
     player1.game.board[i].forEach((j) => {
       let cell = document.createElement("div");
       cell.classList.add("p1-cell");
-      cell.setAttribute("id", `p1-row${i}-cell${j}`);
+      cell.setAttribute("id", `p1-row${i}-cell${j.length}`);
       row.appendChild(cell);
     });
   }
@@ -53,7 +55,7 @@ function renderShips(player) {
       yAxis = pos[1];
     }
 
-    if (player.game.board[xAxis][yAxis] === "0") return;
+    if (player.game.board[xAxis][yAxis] === 0) return;
     if (player.game.board[xAxis][yAxis] === "res") e.classList.add("res");
     else e.classList.add("fleet");
   });

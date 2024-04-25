@@ -3,7 +3,7 @@ const Ship = require("./ship");
 class Gameboard {
   //0 == empty space, 1 == ship in that space
   constructor() {
-    this.board = new Array(10).fill("0").map(() => new Array(10).fill("0"));
+    this.board = new Array(10).fill(0).map(() => new Array(10).fill(0));
     this.ships = [];
     this.success = [];
     this.missed = [];
@@ -17,10 +17,11 @@ class Gameboard {
         //checks for overlow or if ship already in spot
         if (x + shipName.length > 9 || this.board[x + i][y] != 0) {
           return false;
+        } else {
+          this.board[x + i][y] = shipName;
         }
-        this.board[x + i][y] = shipName;
-        this.ships.push(shipName);
       }
+      this.ships.push(shipName);
     }
     if (dir === "ver") {
       //gets name from ship object
@@ -28,10 +29,11 @@ class Gameboard {
         //checks for overlow or if ship already in spot
         if (y + shipName.length > 9 || this.board[x][y + i] != 0) {
           return false;
+        } else {
+          this.board[x][y + i] = shipName;
         }
-        this.board[x][y + i] = shipName;
-        this.ships.push(shipName);
       }
+      this.ships.push(shipName);
     }
   }
 

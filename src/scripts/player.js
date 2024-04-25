@@ -6,6 +6,10 @@ class Player {
     this.game = new Gameboard();
   }
 
+  attack(player, x, y) {
+    return player.game.receiveAttack(x, y);
+  }
+
   randomPos() {
     let xAxis = Math.floor(Math.random() * 10);
     let yAxis = Math.floor(Math.random() * 10);

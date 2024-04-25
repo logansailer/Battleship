@@ -15,24 +15,13 @@ function startGame() {
   let player1Patrol = new Ship(2);
 
   //randomly places player 1's ships on their gameboard
-  let placementCheck = 0;
-  while (placementCheck < 4) {
-    player1.randomShip(player1Carrier)
-  }
-  //player1.randomShip(player1Battleship);
+  while (player1.randomShip(player1Carrier) === false);
+  while (player1.randomShip(player1Battleship) === false);
+  while (player1.randomShip(player1Destroyer) === false);
+  while (player1.randomShip(player1Submarine) === false);
+  while (player1.randomShip(player1Patrol) === false);
 
-  // {
-  //   player1.randomShip(player1Battleship);
-  // }
-  // while (player1.randomShip(player1Destroyer) === false) {
-  //   player1.randomShip(player1Destroyer);
-  // }
-  // while (player1.randomShip(player1Submarine) === false) {
-  //   player1.randomShip(player1Submarine);
-  // }
-  // while (player1.randomShip(player1Patrol) === false) {
-  //   player1.randomShip(player1Patrol);
-  // }
+  //its able to realize when it doesn't work, but it still places the ships before it
 
   //creates player 2's (CPU's) ships
   let player2Carrier = new Ship(5);
@@ -42,12 +31,11 @@ function startGame() {
   let player2Patrol = new Ship(2);
 
   //randomly places player 2's ships on their gameboard
-  player2.randomShip(player2Carrier);
-  player2.randomShip(player2Battleship);
-  player2.randomShip(player2Destroyer);
-  player2.randomShip(player2Submarine);
-  player2.randomShip(player2Patrol);
-
+  while (player2.randomShip(player2Carrier) === false);
+  while (player2.randomShip(player2Battleship) === false);
+  while (player2.randomShip(player2Destroyer) === false);
+  while (player2.randomShip(player2Submarine) === false);
+  while (player2.randomShip(player2Patrol) === false);
   domFunctions.makeBoard(player1, player2);
   domFunctions.renderShips(player1);
 }

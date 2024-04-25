@@ -47,6 +47,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.gameboard {
 .fleet{
   background-color: red
 }
+
+.res{
+  background-color: grey;
+}
 `, ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
@@ -418,6 +422,8 @@ module.exports = styleTagTransform;
 
 const startGame = __webpack_require__(467);
 
+function loadPlayer1Attack(){}
+
 function makeBoard(player1, player2) {
   for (let i = 0; i < 10; i++) {
     let row = document.createElement("div");
@@ -428,7 +434,7 @@ function makeBoard(player1, player2) {
     player1.game.board[i].forEach((j) => {
       let cell = document.createElement("div");
       cell.classList.add("p1-cell");
-      cell.setAttribute("id", `p1-row${i}-cell${j}`);
+      cell.setAttribute("id", `p1-row${i}-cell${j.length}`);
       row.appendChild(cell);
     });
   }
@@ -471,7 +477,7 @@ function renderShips(player) {
       yAxis = pos[1];
     }
 
-    if (player.game.board[xAxis][yAxis] === "0") return;
+    if (player.game.board[xAxis][yAxis] === 0) return;
     if (player.game.board[xAxis][yAxis] === "res") e.classList.add("res");
     else e.classList.add("fleet");
   });
@@ -490,24 +496,25 @@ const Ship = __webpack_require__(877);
 class Gameboard {
   //0 == empty space, 1 == ship in that space
   constructor() {
-    this.board = new Array(10).fill("0").map(() => new Array(10).fill("0"));
+    this.board = new Array(10).fill(0).map(() => new Array(10).fill(0));
     this.ships = [];
     this.success = [];
     this.missed = [];
   }
 
   //places ship in starting position and the positions next to it given length and direction
-  place(x, y, shipName, dir) {
+  place(x, y, shipName, dir) {;
     if (dir === "hor") {
       //gets length from ship object
       for (let i = 0; i < shipName.length; i++) {
         //checks for overlow or if ship already in spot
         if (x + shipName.length > 9 || this.board[x + i][y] != 0) {
           return false;
+        } else {
+          this.board[x + i][y] = shipName;
         }
-        this.board[x + i][y] = shipName;
-        this.ships.push(shipName);
       }
+      this.ships.push(shipName);
     }
     if (dir === "ver") {
       //gets name from ship object
@@ -515,10 +522,11 @@ class Gameboard {
         //checks for overlow or if ship already in spot
         if (y + shipName.length > 9 || this.board[x][y + i] != 0) {
           return false;
+        } else {
+          this.board[x][y + i] = shipName;
         }
-        this.board[x][y + i] = shipName;
-        this.ships.push(shipName);
       }
+      this.ships.push(shipName);
     }
   }
 
@@ -646,23 +654,13 @@ function startGame() {
   let player1Patrol = new Ship(2);
 
   //randomly places player 1's ships on their gameboard
-  while (false) {
-    player1.randomShip(player1Carrier)
-  }
-  //player1.randomShip(player1Battleship);
+  while (player1.randomShip(player1Carrier) === false);
+  while (player1.randomShip(player1Battleship) === false);
+  while (player1.randomShip(player1Destroyer) === false);
+  while (player1.randomShip(player1Submarine) === false);
+  while (player1.randomShip(player1Patrol) === false);
 
-  // {
-  //   player1.randomShip(player1Battleship);
-  // }
-  // while (player1.randomShip(player1Destroyer) === false) {
-  //   player1.randomShip(player1Destroyer);
-  // }
-  // while (player1.randomShip(player1Submarine) === false) {
-  //   player1.randomShip(player1Submarine);
-  // }
-  // while (player1.randomShip(player1Patrol) === false) {
-  //   player1.randomShip(player1Patrol);
-  // }
+  //its able to realize when it doesn't work, but it still places the ships before it
 
   //creates player 2's (CPU's) ships
   let player2Carrier = new Ship(5);
@@ -672,12 +670,11 @@ function startGame() {
   let player2Patrol = new Ship(2);
 
   //randomly places player 2's ships on their gameboard
-  player2.randomShip(player2Carrier);
-  player2.randomShip(player2Battleship);
-  player2.randomShip(player2Destroyer);
-  player2.randomShip(player2Submarine);
-  player2.randomShip(player2Patrol);
-
+  while (player2.randomShip(player2Carrier) === false);
+  while (player2.randomShip(player2Battleship) === false);
+  while (player2.randomShip(player2Destroyer) === false);
+  while (player2.randomShip(player2Submarine) === false);
+  while (player2.randomShip(player2Patrol) === false);
   domFunctions.makeBoard(player1, player2);
   domFunctions.renderShips(player1);
 }
