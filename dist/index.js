@@ -503,7 +503,7 @@ class Gameboard {
   }
 
   //places ship in starting position and the positions next to it given length and direction
-  place(x, y, shipName, dir) {;
+  place(x, y, shipName, dir) {
     if (dir === "hor") {
       //gets length from ship object
       for (let i = 0; i < shipName.length; i++) {
@@ -570,6 +570,10 @@ class Player {
   constructor(name) {
     this.name = name;
     this.game = new Gameboard();
+  }
+
+  attack(player, x, y) {
+    return player.game.receiveAttack(x, y);
   }
 
   randomPos() {
