@@ -26,9 +26,13 @@
 }
 
 .fleet{
-  background-color: red
+  background-color: black
 }
 
-.res{
-  background-color: grey;
+.miss{
+  background-color: blue;
+}
+
+.hit{
+  background-color: red;
 }

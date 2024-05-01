@@ -45,11 +45,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.gameboard {
 }
 
 .fleet{
-  background-color: red
+  background-color: black
 }
 
-.res{
-  background-color: grey;
+.miss{
+  background-color: blue;
+}
+
+.hit{
+  background-color: red;
 }
 `, ""]);
 // Exports
@@ -422,7 +426,7 @@ module.exports = styleTagTransform;
 
 const startGame = __webpack_require__(467);
 
-function loadPlayer1Attack(){}
+function loadPlayer1Attack() {}
 
 function makeBoard(player1, player2) {
   for (let i = 0; i < 10; i++) {
@@ -478,12 +482,43 @@ function renderShips(player) {
     }
 
     if (player.game.board[xAxis][yAxis] === 0) return;
-    if (player.game.board[xAxis][yAxis] === "res") e.classList.add("res");
     else e.classList.add("fleet");
   });
 }
 
-module.exports = { makeBoard, renderShips };
+function renderp2Ships(player) {
+  document.querySelectorAll(".p2-cell").forEach((e, i) => {
+    let xAxis, yAxis;
+    let pos = "" + i;
+
+    // transform index string to array of xAxis and yAxis
+    if (i < 10) {
+      xAxis = 0;
+      yAxis = i;
+    } else {
+      pos = pos.split("");
+      xAxis = pos[0];
+      yAxis = pos[1];
+    }
+
+    if (player.game.board[xAxis][yAxis] === 0) return;
+    else e.classList.add("fleet");
+  });
+}
+
+function loadPlayer1Attack(e, x, y, player1, player2) {
+  let attack = player1.attack(player2, x, y);
+  if (attack === false) {
+    e.target.classList.add("miss");
+  }
+  if (attack === true) {
+    e.target.classList.add("hit");
+
+    if (player2.game.board[x][y].ship.isSunk()) return;
+  }
+}
+
+module.exports = { makeBoard, renderShips, renderp2Ships };
 
 
 /***/ }),
@@ -542,6 +577,7 @@ class Gameboard {
 
   // if position has a ship, return true
   receiveAttack(x, y) {
+    console.log(this.board[x][y])
     if (this.board[x][y] != 0) {
       this.success.push([x, y]);
       this.board[x][y].hit();
@@ -664,8 +700,6 @@ function startGame() {
   while (player1.randomShip(player1Submarine) === false);
   while (player1.randomShip(player1Patrol) === false);
 
-  //its able to realize when it doesn't work, but it still places the ships before it
-
   //creates player 2's (CPU's) ships
   let player2Carrier = new Ship(5);
   let player2Battleship = new Ship(4);
@@ -679,8 +713,10 @@ function startGame() {
   while (player2.randomShip(player2Destroyer) === false);
   while (player2.randomShip(player2Submarine) === false);
   while (player2.randomShip(player2Patrol) === false);
+
   domFunctions.makeBoard(player1, player2);
   domFunctions.renderShips(player1);
+  domFunctions.renderp2Ships(player2);
 }
 
 module.exports = startGame;

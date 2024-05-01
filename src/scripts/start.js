@@ -21,8 +21,6 @@ function startGame() {
   while (player1.randomShip(player1Submarine) === false);
   while (player1.randomShip(player1Patrol) === false);
 
-  //its able to realize when it doesn't work, but it still places the ships before it
-
   //creates player 2's (CPU's) ships
   let player2Carrier = new Ship(5);
   let player2Battleship = new Ship(4);
@@ -36,8 +34,10 @@ function startGame() {
   while (player2.randomShip(player2Destroyer) === false);
   while (player2.randomShip(player2Submarine) === false);
   while (player2.randomShip(player2Patrol) === false);
+
   domFunctions.makeBoard(player1, player2);
   domFunctions.renderShips(player1);
+  domFunctions.renderp2Ships(player2);
 }
 
 module.exports = startGame;

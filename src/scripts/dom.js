@@ -1,6 +1,6 @@
 const startGame = require("./start");
 
-function loadPlayer1Attack(){}
+function loadPlayer1Attack() {}
 
 function makeBoard(player1, player2) {
   for (let i = 0; i < 10; i++) {
@@ -56,9 +56,40 @@ function renderShips(player) {
     }
 
     if (player.game.board[xAxis][yAxis] === 0) return;
-    if (player.game.board[xAxis][yAxis] === "res") e.classList.add("res");
     else e.classList.add("fleet");
   });
 }
 
-module.exports = { makeBoard, renderShips };
+function renderp2Ships(player) {
+  document.querySelectorAll(".p2-cell").forEach((e, i) => {
+    let xAxis, yAxis;
+    let pos = "" + i;
+
+    // transform index string to array of xAxis and yAxis
+    if (i < 10) {
+      xAxis = 0;
+      yAxis = i;
+    } else {
+      pos = pos.split("");
+      xAxis = pos[0];
+      yAxis = pos[1];
+    }
+
+    if (player.game.board[xAxis][yAxis] === 0) return;
+    else e.classList.add("fleet");
+  });
+}
+
+function loadPlayer1Attack(e, x, y, player1, player2) {
+  let attack = player1.attack(player2, x, y);
+  if (attack === false) {
+    e.target.classList.add("miss");
+  }
+  if (attack === true) {
+    e.target.classList.add("hit");
+
+    if (player2.game.board[x][y].ship.isSunk()) return;
+  }
+}
+
+module.exports = { makeBoard, renderShips, renderp2Ships };
