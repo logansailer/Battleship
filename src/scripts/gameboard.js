@@ -53,6 +53,7 @@ class Gameboard {
     if (this.board[x][y] != 0) {
       this.success.push([x, y]);
       this.board[x][y].hit();
+      this.board[x][y].isSunk()
       return true;
     } else {
       this.missed.push([x, y]);

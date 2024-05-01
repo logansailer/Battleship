@@ -435,7 +435,7 @@ function makeBoard(player1, player2) {
     row.setAttribute("id", `p1-row${i}`);
     document.getElementById("player1-board").appendChild(row);
 
-    player1.game.board[i].forEach((j) => {
+    player1.game.board[i].forEach((e, j) => {
       let cell = document.createElement("div");
       cell.classList.add("p1-cell");
       cell.setAttribute("id", `p1-row${i}-cell${j.length}`);
@@ -449,7 +449,7 @@ function makeBoard(player1, player2) {
     row.setAttribute("id", `p2-row${i}`);
     document.getElementById("player2-board").appendChild(row);
 
-    player2.game.board[i].forEach((j) => {
+    player2.game.board[i].forEach((e, j) => {
       let cell = document.createElement("div");
       cell.classList.add("p2-cell");
       cell.setAttribute("id", `p2-row${i}-cell${j}`);
@@ -466,28 +466,9 @@ function makeButtons(player) {
   const boardButtons = document;
 }
 
+//renders player 1's board
 function renderShips(player) {
   document.querySelectorAll(".p1-cell").forEach((e, i) => {
-    let xAxis, yAxis;
-    let pos = "" + i;
-
-    // transform index string to array of xAxis and yAxis
-    if (i < 10) {
-      xAxis = 0;
-      yAxis = i;
-    } else {
-      pos = pos.split("");
-      xAxis = pos[0];
-      yAxis = pos[1];
-    }
-
-    if (player.game.board[xAxis][yAxis] === 0) return;
-    else e.classList.add("fleet");
-  });
-}
-
-function renderp2Ships(player) {
-  document.querySelectorAll(".p2-cell").forEach((e, i) => {
     let xAxis, yAxis;
     let pos = "" + i;
 
@@ -514,11 +495,11 @@ function loadPlayer1Attack(e, x, y, player1, player2) {
   if (attack === true) {
     e.target.classList.add("hit");
 
-    if (player2.game.board[x][y].ship.isSunk()) return;
+    if (player2.game.board[x][y].sunk) return;
   }
 }
 
-module.exports = { makeBoard, renderShips, renderp2Ships };
+module.exports = { makeBoard, renderShips};
 
 
 /***/ }),
@@ -581,6 +562,7 @@ class Gameboard {
     if (this.board[x][y] != 0) {
       this.success.push([x, y]);
       this.board[x][y].hit();
+      this.board[x][y].isSunk()
       return true;
     } else {
       this.missed.push([x, y]);
@@ -716,7 +698,6 @@ function startGame() {
 
   domFunctions.makeBoard(player1, player2);
   domFunctions.renderShips(player1);
-  domFunctions.renderp2Ships(player2);
 }
 
 module.exports = startGame;

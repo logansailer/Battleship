@@ -37,7 +37,6 @@ function startGame() {
 
   domFunctions.makeBoard(player1, player2);
   domFunctions.renderShips(player1);
-  domFunctions.renderp2Ships(player2);
 }
 
 module.exports = startGame;
