@@ -76,6 +76,12 @@ function checkWin(player1, player2) {
 //fires shot onto selected board position of player2
 async function loadPlayer1Attack(e, x, y, player1, player2) {
   let attack = player1.attack(player2, x, y);
+  if (
+    player2.game.success.includes([[x, y]]) ||
+    player2.game.missed.includes([[x, y]])
+  ) {
+    return;
+  }
   if (attack === false) {
     e.target.classList.add("miss");
     await delay(1000);
@@ -93,9 +99,11 @@ function loadPlayer2Attack(player1, player2) {
   let x = player2.randomPos([0]);
   let y = player2.randomPos([1]);
   let attack = player2.attack(player1, x, y);
-
   let e = document.getElementById(`p1-row${x}-cell${y}`);
 
+  if (attack != 0) {
+    return;
+  }
   if (attack === false) {
     e.classList.add("miss");
   }
