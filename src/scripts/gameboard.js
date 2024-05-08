@@ -49,7 +49,6 @@ class Gameboard {
 
   // if position has a ship, return true
   receiveAttack(x, y) {
-    console.log(this.board[x][y])
     if (this.board[x][y] != 0) {
       this.success.push([x, y]);
       this.board[x][y].hit();

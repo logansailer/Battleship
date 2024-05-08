@@ -12,7 +12,7 @@ function makeBoard(player1, player2) {
     player1.game.board[i].forEach((e, j) => {
       let cell = document.createElement("div");
       cell.classList.add("p1-cell");
-      cell.setAttribute("id", `p1-row${i}-cell${j.length}`);
+      cell.setAttribute("id", `p1-row${i}-cell${j}`);
       row.appendChild(cell);
     });
   }
@@ -61,6 +61,7 @@ function renderShips(player) {
   });
 }
 
+//fires shot onto selected board position of player2
 function loadPlayer1Attack(e, x, y, player1, player2) {
   let attack = player1.attack(player2, x, y);
   if (attack === false) {
@@ -71,6 +72,25 @@ function loadPlayer1Attack(e, x, y, player1, player2) {
 
     if (player2.game.board[x][y].sunk) return;
   }
+  loadPlayer2Attack(player1, player2);
 }
 
-module.exports = { makeBoard, renderShips};
+//fires random shot onto player1 board
+function loadPlayer2Attack(player1, player2) {
+  let x = player2.randomPos([0]);
+  let y = player2.randomPos([1]);
+  let attack = player2.attack(player1, x, y);
+
+  let e = document.getElementById(`p1-row${x}-cell${y}`);
+
+  if (attack === false) {
+    e.classList.add("miss");
+  }
+  if (attack === true) {
+    e.classList.add("hit");
+
+    if (player1.game.board[x][y].sunk) return;
+  }
+}
+
+module.exports = { makeBoard, renderShips };
