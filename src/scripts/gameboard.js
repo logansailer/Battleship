@@ -59,9 +59,6 @@ class Gameboard {
       return false;
     }
   }
-
-  //need to do this part
-  victory() {}
 }
 
 module.exports = Gameboard;

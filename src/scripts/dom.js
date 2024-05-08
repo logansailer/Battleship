@@ -1,6 +1,8 @@
 const startGame = require("./start");
 
-function loadPlayer1Attack() {}
+const delay = (delayTime) => {
+  return new Promise((resolve) => setTimeout(resolve, delayTime));
+};
 
 function makeBoard(player1, player2) {
   for (let i = 0; i < 10; i++) {
@@ -61,16 +63,27 @@ function renderShips(player) {
   });
 }
 
+function checkWin(player1, player2) {
+  if (player1.game.allSunk() === true) {
+    alert("Player 2 Wins");
+  }
+
+  if (player2.game.allSunk() === true) {
+    alert("Player 1 wins");
+  }
+}
+
 //fires shot onto selected board position of player2
-function loadPlayer1Attack(e, x, y, player1, player2) {
+async function loadPlayer1Attack(e, x, y, player1, player2) {
   let attack = player1.attack(player2, x, y);
   if (attack === false) {
     e.target.classList.add("miss");
+    await delay(1000);
   }
   if (attack === true) {
     e.target.classList.add("hit");
-
-    if (player2.game.board[x][y].sunk) return;
+    await delay(500);
+    checkWin(player1, player2);
   }
   loadPlayer2Attack(player1, player2);
 }
@@ -88,8 +101,7 @@ function loadPlayer2Attack(player1, player2) {
   }
   if (attack === true) {
     e.classList.add("hit");
-
-    if (player1.game.board[x][y].sunk) return;
+    checkWin(player1, player2);
   }
 }
 
