@@ -101,9 +101,6 @@ function loadPlayer2Attack(player1, player2) {
   let attack = player2.attack(player1, x, y);
   let e = document.getElementById(`p1-row${x}-cell${y}`);
 
-  if (attack != 0) {
-    return;
-  }
   if (attack === false) {
     e.classList.add("miss");
   }
