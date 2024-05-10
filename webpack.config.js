@@ -14,6 +14,9 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "index.js",
   },
+  devServer: {
+    contentBase: "./dist",
+  },
   optimization: {
     minimize: false,
   },
