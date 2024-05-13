@@ -16,6 +16,13 @@ class Gameboard {
       for (let i = 0; i < shipName.length; i++) {
         //checks for overlow or if ship already in spot
         if (x + shipName.length > 9 || this.board[x + i][y] != 0) {
+          for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+              if (this.board[i][j] === shipName) {
+                this.board[i][j] = 0;
+              }
+            }
+          }
           return false;
         } else {
           this.board[x + i][y] = shipName;
@@ -28,6 +35,13 @@ class Gameboard {
       for (let i = 0; i < shipName.length; i++) {
         //checks for overlow or if ship already in spot
         if (y + shipName.length > 9 || this.board[x][y + i] != 0) {
+          for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+              if (this.board[i][j] === shipName) {
+                this.board[i][j] = 0;
+              }
+            }
+          }
           return false;
         } else {
           this.board[x][y + i] = shipName;
@@ -52,7 +66,7 @@ class Gameboard {
     if (this.board[x][y] != 0) {
       this.success.push([x, y]);
       this.board[x][y].hit();
-      this.board[x][y].isSunk()
+      this.board[x][y].isSunk();
       return true;
     } else {
       this.missed.push([x, y]);

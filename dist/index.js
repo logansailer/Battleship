@@ -17,13 +17,37 @@
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.gameboard {
+___CSS_LOADER_EXPORT___.push([module.id, `.header{
+  width: 100%;
+  margin: auto;
+  align-content: center;
+  text-align: center;
+}
+
+.board-container{
+  width: 100%;
+  display: grid;
+  align-content: center;
+  margin: auto;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+.gameboard {
   position: relative;
   width: 400px;
   height: 400px;
   display: grid;
   grid-template-rows: repeat(10, 1fr);
   border: solid black 1px;
+}
+
+.board-space2{
+  margin: auto;
+}
+
+.board-space1{
+  margin: auto;
 }
 
 .p1-row,
@@ -562,6 +586,13 @@ class Gameboard {
       for (let i = 0; i < shipName.length; i++) {
         //checks for overlow or if ship already in spot
         if (x + shipName.length > 9 || this.board[x + i][y] != 0) {
+          for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+              if (this.board[i][j] === shipName) {
+                this.board[i][j] = 0;
+              }
+            }
+          }
           return false;
         } else {
           this.board[x + i][y] = shipName;
@@ -574,6 +605,13 @@ class Gameboard {
       for (let i = 0; i < shipName.length; i++) {
         //checks for overlow or if ship already in spot
         if (y + shipName.length > 9 || this.board[x][y + i] != 0) {
+          for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+              if (this.board[i][j] === shipName) {
+                this.board[i][j] = 0;
+              }
+            }
+          }
           return false;
         } else {
           this.board[x][y + i] = shipName;
@@ -598,7 +636,7 @@ class Gameboard {
     if (this.board[x][y] != 0) {
       this.success.push([x, y]);
       this.board[x][y].hit();
-      this.board[x][y].isSunk()
+      this.board[x][y].isSunk();
       return true;
     } else {
       this.missed.push([x, y]);
