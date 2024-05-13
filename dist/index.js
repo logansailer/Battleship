@@ -527,8 +527,8 @@ function checkWin(player1, player2) {
 async function loadPlayer1Attack(e, x, y, player1, player2) {
   let attack = player1.attack(player2, x, y);
   if (
-    player2.game.success.includes([[x, y]]) ||
-    player2.game.missed.includes([[x, y]])
+    player2.game.success.includes([[x][y]]) ||
+    player2.game.missed.includes([[x][y]])
   ) {
     return;
   }

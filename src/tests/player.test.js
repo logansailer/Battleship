@@ -51,8 +51,3 @@ test("checks if player 1 can sink player 2's ship", () => {
 test("tests if success attempts are being added to array", () => {
   expect(testPlayer2.game.success).toEqual([[1,1], [2,1]]);
 });
-
-test("tests if success attempts are being added to array", () => {
-  console.log(testPlayer2.game.success);
-  expect(testPlayer2.game.success.includes([[1]])).toBe(true);
-});
