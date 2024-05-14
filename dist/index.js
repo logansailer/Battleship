@@ -525,16 +525,17 @@ function checkWin(player1, player2) {
 
 //fires shot onto selected board position of player2
 async function loadPlayer1Attack(e, x, y, player1, player2) {
-  let attack = player1.attack(player2, x, y);
   if (
-    player2.game.success.includes([[x][y]]) ||
-    player2.game.missed.includes([[x][y]])
+    player2.game.success.includes(`${x}, ${y}`) ||
+    player2.game.missed.includes(`${x}, ${y}`)
   ) {
     return;
   }
+
+  let attack = player1.attack(player2, x, y);
   if (attack === false) {
     e.target.classList.add("miss");
-    await delay(1000);
+    await delay(500);
   }
   if (attack === true) {
     e.target.classList.add("hit");
@@ -548,6 +549,13 @@ async function loadPlayer1Attack(e, x, y, player1, player2) {
 function loadPlayer2Attack(player1, player2) {
   let x = player2.randomPos([0]);
   let y = player2.randomPos([1]);
+  if (
+    player1.game.success.includes(`${x}, ${y}`) ||
+    player1.game.missed.includes(`${x}, ${y}`)
+  ) {
+    console.log('x')
+    loadPlayer2Attack(player1, player2);
+  }
   let attack = player2.attack(player1, x, y);
   let e = document.getElementById(`p1-row${x}-cell${y}`);
 
@@ -634,12 +642,12 @@ class Gameboard {
   // if position has a ship, return true
   receiveAttack(x, y) {
     if (this.board[x][y] != 0) {
-      this.success.push([x, y]);
+      this.success.push(`${x}, ${y}`);
       this.board[x][y].hit();
       this.board[x][y].isSunk();
       return true;
     } else {
-      this.missed.push([x, y]);
+      this.missed.push(`${x}, ${y}`);
       return false;
     }
   }
