@@ -39,7 +39,10 @@ function makeBoard(player1, player2) {
 }
 
 function makeButtons(player) {
-  const boardButtons = document;
+  const randomize = document.getElementById("randomize");
+  const restart = document.getElementById("restart")
+  randomize.addEventListener("click", )
+  restart.addEventListener("click", restart)
 }
 
 //renders player 1's board
