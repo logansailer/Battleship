@@ -488,10 +488,6 @@ function makeBoard(player1, player2) {
   }
 }
 
-function makeButtons(player) {
-  const boardButtons = document;
-}
-
 //renders player 1's board
 function renderShips(player) {
   document.querySelectorAll(".p1-cell").forEach((e, i) => {
@@ -553,7 +549,6 @@ function loadPlayer2Attack(player1, player2) {
     player1.game.success.includes(`${x}, ${y}`) ||
     player1.game.missed.includes(`${x}, ${y}`)
   ) {
-    console.log('x')
     loadPlayer2Attack(player1, player2);
   }
   let attack = player2.attack(player1, x, y);
@@ -568,7 +563,8 @@ function loadPlayer2Attack(player1, player2) {
   }
 }
 
-module.exports = { makeBoard, renderShips };
+
+module.exports = { makeBoard, renderShips};
 
 
 /***/ }),

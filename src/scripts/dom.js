@@ -38,13 +38,6 @@ function makeBoard(player1, player2) {
   }
 }
 
-function makeButtons(player) {
-  const randomize = document.getElementById("randomize");
-  const restart = document.getElementById("restart")
-  randomize.addEventListener("click", )
-  restart.addEventListener("click", restart)
-}
-
 //renders player 1's board
 function renderShips(player) {
   document.querySelectorAll(".p1-cell").forEach((e, i) => {
@@ -120,4 +113,5 @@ function loadPlayer2Attack(player1, player2) {
   }
 }
 
-module.exports = { makeBoard, renderShips };
+
+module.exports = { makeBoard, renderShips};
