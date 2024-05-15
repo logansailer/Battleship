@@ -14,13 +14,32 @@ body {
   width: 100%;
   display: grid;
   align-content: center;
-  margin: auto;
   grid-template-columns: 1fr 1fr;
   text-align: center;
 }
 
+@media (min-width: 1360px) {
+  .board-container {
+    grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .board-space1 {
+    grid-area: 1 / 2 / 1 / 3;
+  }
+  .board-space2 {
+    grid-area: 1 / 3 / 1 / 4;
+  }
+  .board-buttons {
+    grid-area: 2 / 2 / 3 / 2;
+  }
+}
+@media (max-width: 840px) {
+  .board-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 .gameboard {
-  position: relative;
   width: 400px;
   height: 400px;
   display: grid;
