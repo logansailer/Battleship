@@ -1,9 +1,11 @@
 const startGame = require("./start");
 
+//adds delay to fiting so CPU doesnt act immediately
 const delay = (delayTime) => {
   return new Promise((resolve) => setTimeout(resolve, delayTime));
 };
 
+//creates player boards
 function makeBoard(player1, player2) {
   for (let i = 0; i < 10; i++) {
     let row = document.createElement("div");
@@ -59,6 +61,7 @@ function renderShips(player) {
   });
 }
 
+//checks for player victory after every shot
 function checkWin(player1, player2) {
   if (player1.game.allSunk() === true) {
     alert("Player 2 Wins");
@@ -113,5 +116,4 @@ function loadPlayer2Attack(player1, player2) {
   }
 }
 
-
-module.exports = { makeBoard, renderShips};
+module.exports = { makeBoard, renderShips };

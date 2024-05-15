@@ -5,10 +5,12 @@ class Ship {
     this.sunk = false;
   }
 
+  //adds a hit to ship object
   hit() {
     this.timesHit++;
   }
 
+  //checks if ship object is sunk
   isSunk() {
     if (this.timesHit >= this.length) {
       this.sunk = true;

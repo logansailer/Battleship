@@ -6,16 +6,19 @@ class Player {
     this.game = new Gameboard();
   }
 
+  //loads attack onto player board
   attack(player, x, y) {
     return player.game.receiveAttack(x, y);
   }
 
+  //creates random position
   randomPos() {
     let xAxis = Math.floor(Math.random() * 10);
     let yAxis = Math.floor(Math.random() * 10);
     return xAxis, yAxis;
   }
 
+  //places ship in a random valid board position
   randomShip(shipName) {
     let xAxis = Math.floor(Math.random() * 10);
     let yAxis = Math.floor(Math.random() * 10);

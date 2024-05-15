@@ -17,14 +17,19 @@
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.header{
+___CSS_LOADER_EXPORT___.push([module.id, `body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.header {
   width: 100%;
   margin: auto;
   align-content: center;
   text-align: center;
 }
 
-.board-container{
+.board-container {
   width: 100%;
   display: grid;
   align-content: center;
@@ -42,11 +47,17 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.header{
   border: solid black 1px;
 }
 
-.board-space2{
+#randomize {
+  padding: 0.5em;
+  margin: 1em;
+  font-size: medium;
+}
+
+.board-space2 {
   margin: auto;
 }
 
-.board-space1{
+.board-space1 {
   margin: auto;
 }
 
@@ -54,11 +65,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.header{
 .p2-row {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  border: solid grey 1px;
+  border: solid #1e2124 1px;
 }
 .p1-cell,
 .p2-cell {
-  border: solid grey 1px;
+  border: solid #1e2124 1px;
 }
 
 .p2-cell {
@@ -68,15 +79,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.header{
   }
 }
 
-.fleet{
-  background-color: black
+.fleet {
+  background-color: #424549;
 }
 
-.miss{
-  background-color: blue;
+.miss {
+  background-color: #7289da;
 }
 
-.hit{
+.hit {
   background-color: red;
 }
 `, ""]);
@@ -450,10 +461,12 @@ module.exports = styleTagTransform;
 
 const startGame = __webpack_require__(467);
 
+//adds delay to fiting so CPU doesnt act immediately
 const delay = (delayTime) => {
   return new Promise((resolve) => setTimeout(resolve, delayTime));
 };
 
+//creates player boards
 function makeBoard(player1, player2) {
   for (let i = 0; i < 10; i++) {
     let row = document.createElement("div");
@@ -509,6 +522,7 @@ function renderShips(player) {
   });
 }
 
+//checks for player victory after every shot
 function checkWin(player1, player2) {
   if (player1.game.allSunk() === true) {
     alert("Player 2 Wins");
@@ -563,8 +577,7 @@ function loadPlayer2Attack(player1, player2) {
   }
 }
 
-
-module.exports = { makeBoard, renderShips};
+module.exports = { makeBoard, renderShips };
 
 
 /***/ }),
@@ -665,16 +678,19 @@ class Player {
     this.game = new Gameboard();
   }
 
+  //loads attack onto player board
   attack(player, x, y) {
     return player.game.receiveAttack(x, y);
   }
 
+  //creates random position
   randomPos() {
     let xAxis = Math.floor(Math.random() * 10);
     let yAxis = Math.floor(Math.random() * 10);
     return xAxis, yAxis;
   }
 
+  //places ship in a random valid board position
   randomShip(shipName) {
     let xAxis = Math.floor(Math.random() * 10);
     let yAxis = Math.floor(Math.random() * 10);
@@ -713,10 +729,12 @@ class Ship {
     this.sunk = false;
   }
 
+  //adds a hit to ship object
   hit() {
     this.timesHit++;
   }
 
+  //checks if ship object is sunk
   isSunk() {
     if (this.timesHit >= this.length) {
       this.sunk = true;

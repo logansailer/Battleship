@@ -1,11 +1,16 @@
-.header{
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.header {
   width: 100%;
   margin: auto;
   align-content: center;
   text-align: center;
 }
 
-.board-container{
+.board-container {
   width: 100%;
   display: grid;
   align-content: center;
@@ -23,11 +28,17 @@
   border: solid black 1px;
 }
 
-.board-space2{
+#randomize {
+  padding: 0.5em;
+  margin: 1em;
+  font-size: medium;
+}
+
+.board-space2 {
   margin: auto;
 }
 
-.board-space1{
+.board-space1 {
   margin: auto;
 }
 
@@ -35,11 +46,11 @@
 .p2-row {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  border: solid grey 1px;
+  border: solid #1e2124 1px;
 }
 .p1-cell,
 .p2-cell {
-  border: solid grey 1px;
+  border: solid #1e2124 1px;
 }
 
 .p2-cell {
@@ -49,14 +60,14 @@
   }
 }
 
-.fleet{
-  background-color: black
+.fleet {
+  background-color: #424549;
 }
 
-.miss{
-  background-color: blue;
+.miss {
+  background-color: #7289da;
 }
 
-.hit{
+.hit {
   background-color: red;
 }
