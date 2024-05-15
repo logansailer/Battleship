@@ -103,6 +103,7 @@ function loadPlayer2Attack(player1, player2) {
     player1.game.missed.includes(`${x}, ${y}`)
   ) {
     loadPlayer2Attack(player1, player2);
+    return
   }
   let attack = player2.attack(player1, x, y);
   let e = document.getElementById(`p1-row${x}-cell${y}`);
