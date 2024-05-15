@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer type="text/javascript" src="index.js"></script>
+    <title>Battleship</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Battleship</h1>
+    </div>
+    <div class="board-container" id="board-container">
+      <div class="board-space1">
+        <h3>Your Board</h3>
+        <div class="player1-board gameboard" id="player1-board"></div>
+      </div>
+      <div class="board-space2">
+        <h3>Enemy's Board</h3>
+        <div class="player2-board gameboard" id="player2-board"></div>
+      </div>
+      <div class="board-buttons" id="board-buttons">
+        <button id="randomize" onClick="window.location.reload();">
+          Randomize Positions
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
